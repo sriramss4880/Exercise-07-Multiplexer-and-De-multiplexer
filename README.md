@@ -65,8 +65,8 @@ Generate RTL realization and timing diagrams.
 ### Multiplexer
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: KAVIYA SHREE S
-RegisterNumber: 212222110018
+Developed by: SRIRAM S S
+RegisterNumber: 212222230150
 */
 ```
 module mul(I0,I1,I2,I3,S0,S1,Y);
@@ -87,8 +87,8 @@ endmodule
 ### De-Multiplexer
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: KAVIYA SHREE S
-RegisterNumber: 212222110018
+Developed by: SRIRAM S S
+RegisterNumber: 212222230150
 */
 ```
 module demul(Y0,Y1,Y2,Y3,S0,S1,I);

@@ -1,88 +1,115 @@
-# Exercise-07-Multiplexer-and-De-multiplexer
-### AIM: To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
+# Exp-6-Synchornous-counters - up counter and down counter 
+### AIM: To implement 4 bit up and down counters and validate  functionality.
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
 ### THEORY 
 
-## What are Multiplexer and Demultiplexer?
-In-network transmission, both the multiplexer and demultiplexer are combinational circuits. A multiplexer selects an input from several inputs then it is transmitted in the form of a single line. An alternative name of the multiplexer is MUX or data selector. A demultiplexer uses one input signal and generates many. So it is known as Demux or data distributor.
+## UP COUNTER 
+The counter is a digital sequential circuit and here it is a 4 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
 
-## What is a Multiplexer?
-The multiplexer is a device that has multiple inputs and single line output. The select lines determine which input is connected to the output, and also increase the amount of data that can be sent over a network within a certain time. It is also called a data selector.
+The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
+The Counter will be set to Zero when “reset” input is at logic high.
+The counter will be loaded with “data” input when the “load” signal is at logic high. Otherwise, it will count up or down.
+The counter will count up when the “up_down” signal is logic high, otherwise count down
 
-The single-pole multi-position switch is a simple example of a non-electronic circuit of the multiplexer, and it is widely used in many electronic circuits. The multiplexer is used to perform high-speed switching and is constructed by electronic components.
+Since we know that binary count sequences follow a pattern of octave (factor of 2) frequency division, and that J-K flip-flop multivibrators set up for the “toggle” mode are capable of performing this type of frequency division, we can envision a circuit made up of several J-K flip-flops, cascaded to produce four bits of output.
+The main problem facing us is to determine how to connect these flip-flops together so that they toggle at the right times to produce the proper binary sequence.
+Examine the following binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1:
+Binary count sequence, paying attention to patterns preceding the “toggling” of a bit between 0 and 1.
 
-![image](https://user-images.githubusercontent.com/36288975/170912485-73c395c7-23c0-4e78-a53d-a2f0d07d9662.png)
-          Figure-01 multiplexer block diagram 
-
-Multiplexers are capable of handling both analog and digital applications. In analog applications, multiplexers are made up of relays and transistor switches, whereas in digital applications, the multiplexers are built from standard logic gates. When the multiplexer is used for digital applications, it is called a digital multiplexer.
-
-4-to-1 Multiplexer
-The 4X1 multiplexer comprises 4-input bits, 1- output bit, and 2- control bits. The four input bits are namely 0, D1, D2, and D3, respectively; only one of the input bits is transmitted to the output. The o/p ‘q’ depends on the value of control input AB. The control bit AB decides which of the i/p data bit should transmit the output. The following figure shows the 4X1 multiplexer circuit diagram using AND gates. For example, when the control bits AB =00, then the higher AND gates are allowed while remaining AND gates are restricted. Thus, data input D0 is transmitted to the output ‘q”
-![image](https://user-images.githubusercontent.com/36288975/170912568-3598c60a-5035-41f3-b0c4-ccedba13aca5.png)
+Note that each bit in this four-bit sequence toggles when the bit before it (the bit having a lesser significance, or place-weight), toggles in a particular direction: from 1 to 0.
 
 
-Figure2 4X1 multiplexer 
-If the control input is changed to 11, then all gates are restricted except the bottom AND gate. In this case, D3 is transmitted to the output, and q=D0. If the control input is changed to AB =11, all gates are disabled except the bottom AND gate. In this case, D3 is transmitted to the output, and q = D3. The best example of a 4X1 multiplexer is IC 74153. In this IC, the o/p is the same as the i/p. Another example of a 4X1 multiplexer is IC 45352. In this IC, the o/p is the compliment of the i/p
-
-
-## What is Demultiplexer?
-De-multiplexer is also a device with one input and multiple output lines. It is used to send a signal to one of the many devices. The main difference between a multiplexer and a de-multiplexer is that a multiplexer takes two or more signals and encodes them on a wire, whereas a de-multiplexer does reverse to what the multiplexer does.
-![image](https://user-images.githubusercontent.com/36288975/170912606-a30e4b74-1726-4430-b245-2c3c3d9c232d.png)
-Figure 3 De-multiplexer 
-1-4 Demultiplexer
-The 1-to-4 demultiplexer comprises 1- input bit, 4-output bits, and control bits. The 1X4 demultiplexer circuit diagram is shown below.![image](https://user-images.githubusercontent.com/36288975/170912683-00fb746a-1d45-4023-91d1-3a70b841073c.png)
-
-![image](https://user-images.githubusercontent.com/36288975/170912741-7cbd52af-7e0d-4be3-b5c6-6fb9c4eca7c9.png)
-
-Figure4 1X4 De-multiplexer 
-The i/p bit is considered as Data D. This data bit is transmitted to the data bit of the o/p lines, which depends on the AB value and the control i/p.
-
-When the control i/p AB = 01, the upper second AND gate is permitted while the remaining AND gates are restricted. Thus, only data bit D is transmitted to the output, and Y1 = Data.
-
-If the data bit D is low, the output Y1 is low. IF data bit D is high, the output Y1 is high. The value of the output Y1 depends upon the value of data bit D, the remaining outputs are in a low state.
-
-If the control input changes to AB = 10, then all the gates are restricted except the third AND gate from the top. Then, data bit D is transmitted only to the output Y2; and, Y2 = Data. . The best example of 1X4 demultiplexer is IC 74155.
 
  
  
+
+Starting with four J-K flip-flops connected in such a way to always be in the “toggle” mode, we need to determine how to connect the clock inputs in such a way so that each succeeding bit toggles when the bit before it transitions from 1 to 0.
+
+The Q outputs of each flip-flop will serve as the respective binary bits of the final, four-bit count:
+
+ 
+ 
+
+Four-bit “Up” Counter
+![image](https://user-images.githubusercontent.com/36288975/169644758-b2f4339d-9532-40c5-af40-8f4f8c942e2c.png)
+
+
+## DOWN COUNTER 
+
+As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
+
+This type of counter is normally referred to as a Down Counter, (CTD). In a binary or BCD down counter, the count decreases by one for each external clock pulse from some preset value. Special dual purpose IC’s such as the TTL 74LS193 or CMOS CD4510 are 4-bit binary Up or Down counters which have an additional input pin to select either the up or down count mode.
+![image](https://user-images.githubusercontent.com/36288975/169644844-1a14e123-7228-4ed8-81a9-eb937dff4ac8.png)
+
+
+4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+ Compile and run the verilog program in the quartus software.
+ Realize the RTL logic for the same.
+ Create a new university program vwf and import nodes using node finder.
+ Run functional simulation to obtain the timing diagram.
 
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: SRIRAM S S
+RegisterNumber: 212222230150
 */
+UP COUNTER :
+
+module uc(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
+
+DOWN COUNTER :
+
+module dc(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
 
 
 
+### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
+UP COUNTER:
+![WhatsApp Image 2023-05-31 at 14 27 49](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/7e515c9c-87ec-4042-b561-46b6630b129f)
 
+DOWN COUNTER:
+![WhatsApp Image 2023-05-31 at 14 29 42](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/db12cad9-02e0-4e07-88ed-2da8d3ff9d8d)
 
-### RTL LOGIC  
+### TIMING DIGRAMS FOR COUNTER  
+UP COUNTER:
+![WhatsApp Image 2023-05-31 at 14 21 59](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/6abb4fb5-8348-4a16-897b-61802ce6d9fa)
 
-
-
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
+DOWN COUNTER:
+![WhatsApp Image 2023-05-31 at 14 33 21](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/7ba0a5b6-b3f7-46ea-bb97-8e8fed37e06e)
 
 ### TRUTH TABLE 
 
+UP COUNTER:
+![image](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/6d025e39-4c91-4f48-b61e-cba0f981cd5a)
 
-
-
-
+DOWN COUNTER:
+![image](https://github.com/kaviya2839/Exp-7-Synchornous-counters-/assets/120553351/9308bf69-7e76-4c84-84f9-a64d3a18e3e1)
 
 ### RESULTS 
+Thus,4 bit Up and Down counters are implemented successfully.

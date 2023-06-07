@@ -47,18 +47,28 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
 
-
+### STEP 1
+Start the module using module projname().
+### STEP 2
+Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+### STEP 3
+Use wire to assign intermediate outputs.
+### STEP 4
+Use and,or and not gates to get the desired output.
+### STEP 
+End the module.
+### STEP 6
+Generate RTL realization and timing diagrams.
 
 ### PROGRAM
-```
 ### Multiplexer
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by:SRIRAM S S
-RegisterNumber: 212222230150
+Developed by: KAVIYA SHREE S
+RegisterNumber: 212222110018
 */
+```
 module mul(I0,I1,I2,I3,S0,S1,Y);
 input I0,I1,I2,I3,S0,S1;
 output Y;
@@ -71,15 +81,16 @@ and(R,S0,S1c,I2);
 and(S,S0,S1,I3);
 or(Y,P,Q,R,S);
 endmodule
-
+```
 
 ### PROGRAM
 ### De-Multiplexer
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: SRIRAM S S
-RegisterNumber: 212222230150
+Developed by: KAVIYA SHREE S
+RegisterNumber: 212222110018
 */
+```
 module demul(Y0,Y1,Y2,Y3,S0,S1,I);
 input I,S0,S1;
 output Y0,Y1,Y2,Y3;
@@ -93,7 +104,6 @@ and(Y3,I,S0,S1);
 endmodule
 ```
 
-
 ### RTL LOGIC  
 ### Multiplexer:
 ![image](https://github.com/kaviya2839/Exercise-07-Multiplexer-and-De-multiplexer/assets/120553351/7ec3b7d1-3667-47ad-ad26-97d4dab451b1)
@@ -104,7 +114,7 @@ endmodule
 
 ### TIMING DIGRAMS  
 ### Multiplexer:
-![image](https://github.com/kaviya2839/Exercise-07-Multiplexer-and-De-multiplexer/assets/120553351/716fde9a-6378-465f-b5aa-97ef0c4ce4ed)
+![image](https://github.com/kaviya2839/Exercise-07-Multiplexer-and-De-multiplexer/assets/120553351/65bdc304-6b18-4520-a057-a6075bf4d5bc)
 
 ### De-Multiplexer:
 ![image](https://github.com/kaviya2839/Exercise-07-Multiplexer-and-De-multiplexer/assets/120553351/3dc67ac1-c56b-4240-a494-d98a84cf5d9b)

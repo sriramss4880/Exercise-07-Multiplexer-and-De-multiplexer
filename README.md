@@ -76,7 +76,7 @@ endmodule
 ### De-Multiplexer
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: KAVIYA SHREE S
+Developed by: SRIRAM S S
 RegisterNumber: 212222230150
 */
 module demul(Y0,Y1,Y2,Y3,S0,S1,I);
